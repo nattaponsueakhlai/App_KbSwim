@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head -->
+<head>
+    <th:block th:include="layout/header_css"></th:block>
+</head>
+<!-- END: Head -->
+
+<!-- BEGIN: Body -->
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
+      data-menu="vertical-menu-modern" data-col="">
+<!-- Loading -->
+<th:block th:include="layout/loading"></th:block>
+<!-- Loading -->
+<!-- HEADER -->
+<th:block th:include="layout/header"></th:block>
+<!-- HEADER -->
+<!-- MENU -->
+<th:block th:include="layout/menu"></th:block>
+<!-- MENU -->
+<!-- BEGIN: Content -->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header">Custom Error Message Dopa</h2>
+                    </div>
+                </div>
+            </div>
+
+<!--            <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">-->
+<!--                <div class="mb-1 breadcrumb-right">-->
+<!--                    <button class="btn-icon btn btn-primary btn-round" id="add-error-message" type="button"-->
+<!--                            data-bs-toggle="modal"-->
+<!--                            data-bs-target="#addDetail"><i data-feather="plus"></i> ADD NEW-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+
+        <div class="content-body">
+            <!-- table section-->
+            <section id="error-message-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-datatable">
+                                <table id="error-message-table"
+                                       class="datatables-ajax table-responsive display table nowrap">
+                                    <thead>
+                                    <tr>
+
+                                        <th>Error Code</th>
+                                        <th>DESCRIPTION</th>
+                                        <th>Error Message Th</th>
+                                        <th>Error Message En</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<!-- Modal adddetail-->
+<div class="modal fade text-start" id="addDetail" tabindex="-1" aria-labelledby="myModalLabel17" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom">
+                <h4 class="modal-title" id="myModalLabel17">Add Detail</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <form class="needs-validation" id="new-error-message-from" th:object="${newErrorDopa}" novalidate>
+                    <div class="row">
+                        <input type="hidden" th:field="*{rowId}">
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" th:for="*{code}">Error Code</label>
+                                <input type="text" class="form-control" readonly="readonly" th:field="*{code}" required
+                                       placeholder="CODE : 000000"/>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" th:for="*{description}">Description</label>
+                                <input type="text" class="form-control" readonly="readonly" th:field="*{description}"
+                                       placeholder="name file img"/>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" th:for="*{descriptionTh}">Description TH</label>
+                                <input type="text" class="form-control" th:field="*{descriptionTh}" required
+                                       placeholder="ERROR HEADER TH"/>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" th:for="*{descriptionEn}">Description EN</label>
+                                <input type="text" class="form-control" th:field="*{descriptionEn}" required
+                                       placeholder="ERROR HEADER EN"/>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" id="save-error-message" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal editdetail-->
+<!--<div class="modal fade text-start" id="editDetail" tabindex="-1" aria-labelledby="editDetail" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered modal-lg">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header border-bottom">-->
+<!--                <h4 class="modal-title">Edit Detail</h4>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+
+<!--            <div class="modal-body">-->
+
+<!--                <form class="needs-validation" novalidate>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xl-6 col-md-6 col-12">-->
+<!--                            <div class="mb-1">-->
+<!--                                <label class="form-label" for="editerror_codeInput">Error Code</label>-->
+<!--                                <input type="text" class="form-control" id="editerror_codeInput"-->
+<!--                                       placeholder="CODE : 000000"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-xl-6 col-md-6 col-12">-->
+<!--                            <div class="mb-1">-->
+<!--                                <label class="form-label" for="editname_img">NAME IMAGES</label>-->
+<!--                                <input type="text" class="form-control" id="editname_img" placeholder="name file img"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-xl-6 col-md-6 col-12">-->
+<!--                            <div class="mb-1">-->
+<!--                                <label class="form-label" for="editheader_thInput">Error Header TH</label>-->
+<!--                                <input type="text" class="form-control" id="editheader_thInput"-->
+<!--                                       placeholder="ERROR HEADER TH"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-xl-6 col-md-6 col-12">-->
+<!--                            <div class="mb-1">-->
+<!--                                <label class="form-label" for="editheader_enInput">Error Header EN</label>-->
+<!--                                <input type="text" class="form-control" id="editheader_enInput"-->
+<!--                                       placeholder="ERROR HEADER EN"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-xl-6 col-md-6 col-12">-->
+<!--                            <div class="mb-1">-->
+<!--                                <label class="form-label" for="editdetail_thInput">Error Detail TH</label>-->
+<!--                                <input type="text" class="form-control" id="editdetail_thInput"-->
+<!--                                       placeholder="ERROR DETAIL TH"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-xl-6 col-md-6 col-12">-->
+<!--                            <div class="mb-1">-->
+<!--                                <label class="form-label" for="editdetail_enInput">Error Detail EN</label>-->
+<!--                                <input type="text" class="form-control" id="editdetail_enInput"-->
+<!--                                       placeholder="ERROR DETAIL EN"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+<!--                            <button type="submit" class="btn btn-primary">Save</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--  Modal delete-->
+<div class="d-inline-block">
+    <!-- Modal -->
+    <div class="modal fade modal-danger text-start" id="delete" tabindex="-1" aria-labelledby="myModalLabel120"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel120">Danger Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Tart lemon drops macaroon oat cake chocolate toffee chocolate bar icing. Pudding jelly beans
+                    carrot cake pastry gummies cheesecake lollipop. I love cookie lollipop cake I love sweet gummi
+                    bears cupcake dessert.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<!-- FOOTER -->
+<th:block th:include="layout/footer"></th:block>
+<!-- FOOTER -->
+
+<!-- JAVA SCRIPT -->
+<th:block th:include="layout/javascript"></th:block>
+
+<script th:src="@{/theme/main/js/pages/error-message-dopa.js}"></script>
+
+<!-- JAVA SCRIPT -->
+</html>

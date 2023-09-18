@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head -->
+<head>
+    <th:block th:include="layout/header_css"></th:block>
+</head>
+<!-- END: Head -->
+
+<!-- BEGIN: Body -->
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
+      data-menu="vertical-menu-modern" data-col="">
+<!-- Loading -->
+<th:block th:include="layout/loading"></th:block>
+<!-- Loading -->
+<!-- HEADER -->
+<th:block th:include="layout/header"></th:block>
+<!-- HEADER -->
+<!-- MENU -->
+<th:block th:include="layout/menu"></th:block>
+<!-- MENU -->
+<!-- BEGIN: Content -->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header">Transaction</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <!-- search section-->
+            <section>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">search</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form class="needs-validation" novalidate>
+                                                <div class="row">
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="startDate">Start Date</label>
+                                                        <input type="text" id="startDate"
+                                                               class="form-control flatpickr-basic"
+                                                               placeholder="YYYY-MM-DD"/>
+                                                    </div>
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="endDate">End Date</label>
+                                                        <input type="text" id="endDate"
+                                                               class="form-control flatpickr-basic"
+                                                               placeholder="YYYY-MM-DD"/>
+                                                    </div>
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="dopa-status">Dopa status</label>
+                                                        <select class="form-select" id="dopa-status">
+                                                            <option value="">Select Dopa Status</option>
+                                                            <option th:each="errorDopa : ${errorDopas}"
+                                                                    th:value="${errorDopa.getDescription()}"
+                                                                    th:text="${errorDopa.getCode()}+'. '+${errorDopa.getDescription()}">
+                                                        </select>
+                                                    </div>
+
+<!--                                                    <div class="col-xl-4 mb-1">-->
+<!--                                                        <label class="form-label" for="dopa-status">Dopa status</label>-->
+<!--                                                        <select class="form-select select2" id="dopa-status" multiple>-->
+<!--                                                            <option value="">Select Dopa Status</option>-->
+<!--                                                            <option th:each="errorDopa : ${errorDopas}"-->
+<!--                                                                    th:value="${errorDopa.getDescription()}"-->
+<!--                                                                    th:text="${errorDopa.getCode()}+'. '+${errorDopa.getDescription()}">-->
+<!--                                                        </select>-->
+<!--                                                    </div>-->
+
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="system-flag">Select Sale User</label>
+                                                        <select class="form-select" id="system-flag">
+                                                            <option value="">Select Sale User</option>
+                                                            <option value="0">Sale01</option>
+                                                            <option value="1">Sale02</option>
+                                                        </select>
+                                                    </div>
+
+<!--                                                    <div class="col-xl-4 mb-1">-->
+<!--                                                        <label class="form-label" for="select-ndid">Select Ndid Status</label>-->
+<!--                                                        <select class="form-select" id="select-ndid">-->
+<!--                                                            <option value="">Select Ndid Status</option>-->
+<!--                                                            <option value="completed">completed</option>-->
+<!--                                                            <option value="errored">errored</option>-->
+<!--                                                        </select>-->
+<!--                                                    </div>-->
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="select-return-status">Select Status</label>
+                                                        <select class="form-select" id="select-return-status">
+                                                            <option value="">select-status</option>
+                                                            <option value="Success">Success</option>
+                                                            <option value="Error">Error</option>
+                                                        </select>
+                                                    </div>
+
+
+
+                                                    <div class="col-12">
+                                                        <button type="button" class="btn btn-primary me-1"
+                                                                id="search-btn">
+                                                            Search
+                                                        </button>
+
+                                                        <button type="button" class="btn btn-outline-danger me-1"
+                                                                id="clear-btn">
+                                                            Clear
+                                                        </button>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- table section-->
+            <section id="activity_Log-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <!-- <h4 class="card-title">Data</h4>-->
+                            </div>
+                            <div class="card-datatable">
+                                <table id="transaction-table"
+                                       class="datatables-ajax table-responsive display table nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>UCID</th>
+                                        <th>Sale User</th>
+                                        <th>Dopa Code</th>
+                                        <th>Dopa Status</th>
+                                        <th>Status</th>
+                                        <th>Created At</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+
+<!--                                                        <div class="col-12 center">-->
+<!--                                                            <button type="button" class="btn btn-primary me-1"-->
+<!--                                                                    id="export-button">-->
+<!--                                                                Export-->
+<!--                                                            </button>-->
+<!--                                                        </div>-->
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+<!-- FOOTER -->
+<th:block th:include="layout/footer"></th:block>
+<!-- FOOTER -->
+
+<!-- JAVA SCRIPT -->
+<th:block th:include="layout/javascript"></th:block>
+<!-- JAVA SCRIPT -->
+
+<!--<script th:src="@{/theme/main/js/pages/transaction.js}"></script>-->
+
+</html>

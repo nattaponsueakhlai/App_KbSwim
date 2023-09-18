@@ -1,0 +1,219 @@
+/*cusstom_style Proxy*/
+
+html{
+
+}
+
+/*-------------------------------------------*/
+body{
+
+}
+
+/*-------------------------------------------*/
+/*fontsiz*/
+h1,h2,h3,h4,h5,h6{
+
+}
+/*-------------------------------------------*/
+/*fontsiz*/
+p{
+
+}
+/*-------------------------------------------*/
+/*fontsiz*/
+span{
+
+
+}
+/*-------------------------------------------*/
+/*size logo header*/
+.main-menu .navbar-header .navbar-brand .brand-logo img {
+    max-width: 70px;
+    margin-bottom: 10px;
+
+}
+
+/*-------------------------------------------*/
+/*color all*/
+.btn-proxy-default{
+
+}
+th{
+    text-align: center;
+}
+/*-------------------------------------------*/
+/*lodaing*/
+#overlay {
+    background: #000000;
+    color: #666666;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    float: left;
+    text-align: center;
+    padding-top: 25%;
+    opacity: .80;
+}
+
+
+
+
+.spinner {
+    margin: 0 auto;
+    height: 64px;
+    width: 64px;
+    animation: rotate 0.8s infinite linear;
+    border: 5px solid firebrick;
+    border-right-color: transparent;
+    border-radius: 50%;
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+pre {
+    background-color: ghostwhite;
+    border: 1px solid silver;
+    padding: 10px 20px;
+    height: 500px;
+}
+
+.json-key {
+    color: black;
+}
+
+.json-value {
+    color: red;
+}
+
+.json-string {
+    color: green;
+}
+
+/*-------------------------------------------*/
+
+/*Page Lookup*/
+.btn-initials{
+    margin-right: 10px;
+}
+
+
+/*-------------------------------------------*/
+.icon-view,.icon-edit{
+    height: 15px;
+}
+
+
+
+
+/*hide input add cert*/
+.provider-type, .hash-alg,.slot-name,.pass-phrase,.upload-file,.cert-alias,.cert-pwd{
+    display: none;
+}
+
+
+
+/*pages approve*/
+#originalimage,#currentimage{
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    max-height: 165px;
+
+}
+.border-liveness{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+.textdiscrip{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.textborder{
+    height: 145px;
+}
+.border-title{
+    margin-bottom: 10px;
+}
+.linehr{
+    width: 100%;
+    margin-bottom: 10px;
+}
+hr.line-center-img{
+    width: 1px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0rem;
+}
+hr.linedata{
+    width: 100%;
+    background-color: #d8d6de;
+    margin-top: 10px;
+}
+
+.img-tisco{
+    height: 50px;
+    margin-top: 5px;
+}
+.logomenu{
+    height: 35px;
+}
+.main-menu .navbar-header .navbar-brand .brand-text{
+    color: #1369b0;
+}
+
+/*table*/
+#cert-table, #service-table, #role-table{
+    overflow:auto;
+    width:100%;
+    position:relative;
+}
+
+.menuright{
+    width: 100px;
+}
+.checkright{
+    margin-left: 50px;
+}
+
+
+#imgbackuround-error{
+    background-image: url("../../main/images/pages/img-error-test1.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 607px;
+    margin-top: 20px;
+
+}
+.text-in-img{
+    padding-top: 18%;
+}
+
+.text-in-img .head2{
+    color: #000000;
+    font-size: 70px;
+}
+
+.text-in-img .head1{
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.text-in-img .detail1{
+    color: #000000;
+    font-size: 20px;
+}

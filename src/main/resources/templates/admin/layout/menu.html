@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:layout="menu" id="hiddenmenuapprove">
+    <!-- BEGIN: Main Menu-->
+    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav flex-row">
+                <li class="nav-item me-auto"><a class="navbar-brand">
+                    <span class="brand-logo">
+                        <img th:src="@{/theme/main/admin/images/logo/kb-swimlogo01.png}" class="img-fluid logomenu">
+                    </span>
+                    <h2 class="brand-text mb-1">Admin</h2>
+                </a></li>
+                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i
+                        class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i
+                        class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc"
+                        data-ticon="disc"></i></a></li>
+            </ul>
+        </div>
+        <div class="shadow-bottom"></div>
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+<!--                <li class=" nav-item"><a class="d-flex align-items-center" th:href="@{/tenant/a10b1e34-5c0c-4bf0-b48d-e945f95590a8}"><i-->
+                <li class=" nav-item"><a class="d-flex align-items-center" th:href="@{/}"><i
+                        data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Tenant">Dashboard</span></a>
+                </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" th:href="@{/}"><i
+                        data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="ActivityLog">Admin System</span></a>
+                </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" th:href="@{/}"><i
+                        data-feather="external-link"></i><span class="menu-title text-truncate" data-i18n="transaction">list คอร์สเรียน</span></a>
+                </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" th:href="@{/classroom}"><i
+                        data-feather="link-2"></i><span class="menu-title text-truncate" data-i18n="transaction">list ตารางสอน</span></a>
+                </li>
+
+                <li class=" nav-item"><a class="d-flex align-items-center" th:href="@{/}"><i
+                        data-feather="link-2"></i><span class="menu-title text-truncate" data-i18n="transaction">list รายชื่อ นักเรียน</span></a>
+                </li>
+
+                <li class=" nav-item"><a class="d-flex align-items-center" th:href="@{/}"><i
+                        data-feather="alert-triangle"></i><span class="menu-title text-truncate" data-i18n="Error-Page"> list รายได้</span></a>
+                </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" th:href="@{/}"><i
+                        data-feather="alert-triangle"></i><span class="menu-title text-truncate" data-i18n="Error-Page"> แก้ไขข้อมูลหน้าบ้าน</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- END: Main Menu-->
+</div>

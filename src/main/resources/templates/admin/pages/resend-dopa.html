@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head -->
+<head>
+    <th:block th:include="layout/header_css"></th:block>
+</head>
+<!-- END: Head -->
+
+<!-- BEGIN: Body -->
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
+      data-menu="vertical-menu-modern" data-col="">
+<!-- Loading -->
+<th:block th:include="layout/loading"></th:block>
+<!-- Loading -->
+<!-- HEADER -->
+<th:block th:include="layout/header"></th:block>
+<!-- HEADER -->
+<!-- MENU -->
+<th:block th:include="layout/menu"></th:block>
+<!-- MENU -->
+<!-- BEGIN: Content -->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header">Resend Dopa</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!--            <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">-->
+            <!--                <div class="mb-1 breadcrumb-right">-->
+            <!--                    <button class="btn-icon btn btn-primary btn-round" id="add-error-message" type="button"-->
+            <!--                            data-bs-toggle="modal"-->
+            <!--                            data-bs-target="#addDetail"><i data-feather="plus"></i> ADD NEW-->
+            <!--                    </button>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </div>
+
+        <div class="content-body">
+            <!-- table section-->
+            <section id="error-message-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-datatable">
+                                <table id="resend-dopa"
+                                       class="datatables-ajax table-responsive display table nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>Created At</th>
+                                        <th>UCID</th>
+                                        <th>Sale User</th>
+                                        <th>Status Dopa</th>
+                                        <th>DESCRIPTION</th>
+                                        <th>Resend Dopa</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr style="text-align: center">
+                                        <td>2023-08-09:00.00</td>
+                                        <td>XXXX-XXXX</td>
+                                        <td>Sale 01</td>
+                                        <td>
+                                                <span class="badge badge-light-danger">Error</span>
+
+                                        </td>
+                                        <td>Disconnect</td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-warning me-1">
+                                                Resend
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+
+</body>
+<!-- FOOTER -->
+<th:block th:include="layout/footer"></th:block>
+<!-- FOOTER -->
+
+<!-- JAVA SCRIPT -->
+<th:block th:include="layout/javascript"></th:block>
+
+<script th:src="@{/theme/main/js/pages/resend-dopa.js}"></script>
+
+<!-- JAVA SCRIPT -->
+</html>

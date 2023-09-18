@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" class="loading" lang="en"
+      data-textdirection="ltr">
+<!-- BEGIN: Head -->
+<head>
+    <th:block th:include="layout/header_css"></th:block>
+</head>
+<!-- END: Head -->
+
+<!-- BEGIN: Body -->
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
+      data-menu="vertical-menu-modern" data-col="">
+
+<!-- Loading -->
+<th:block th:include="layout/loading"></th:block>
+<!-- Loading -->
+<!-- HEADER -->
+<th:block th:include="layout/header"></th:block>
+<!-- HEADER -->
+<!-- MENU -->
+<th:block th:include="layout/menu"></th:block>
+<!-- MENU -->
+<!-- BEGIN: Content -->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header">Tenant / <span th:text="${tenant.nameEn}"></span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <!-- Tabs with Icon starts -->
+            <div class="col-xl-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" role="tablist" id="TabKeep">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="informationIcon-tab" data-bs-toggle="tab"
+                                   href="#information" aria-controls="information" role="tab"
+                                   aria-selected="true">Information</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content">
+                            <!-- Tab Modal Information -->
+                            <div class="tab-pane active" id="information" aria-labelledby="informationIcon-tab"
+                                 role="tabpanel">
+                                <form th:object="${tenant}">
+                                    <div class="row">
+                                        <div class="col-xl-6 mb-1">
+                                            <label class="form-label" th:for="*{uuid}">UUID</label>
+                                            <input th:field="*{uuid}" class="form-control form-control-lg" type="text"
+                                                   disabled/>
+                                        </div>
+                                        <div class="col-xl-6 mb-1">
+                                            <label class="form-label" th:for="*{status}">Status</label>
+                                            <input th:field="*{status}" class="form-control form-control-lg" type="text"
+                                                   disabled/>
+                                        </div>
+
+                                        <div class="col-xl-6 mb-1">
+                                            <label class="form-label" th:for="*{shortNameTh}">Short Name TH</label>
+                                            <input th:field="*{shortNameTh}" class="form-control form-control-lg"
+                                                   type="text" disabled/>
+                                        </div>
+
+                                        <div class="col-xl-6 mb-1">
+                                            <label class="form-label" th:for="*{shortNameEn}">Short Name EN</label>
+                                            <input th:field="*{shortNameEn}" class="form-control form-control-lg"
+                                                   type="text" disabled/>
+                                        </div>
+
+                                        <div class="col-xl-6 mb-1">
+                                            <label class="form-label" th:for="*{nameTh}">Name TH</label>
+                                            <input th:field="*{nameTh}" class="form-control form-control-lg" type="text"
+                                                   disabled/>
+                                        </div>
+                                        <div class="col-xl-6 mb-1">
+                                            <label class="form-label" th:for="*{nameEn}">Name EN</label>
+                                            <input th:field="*{nameEn}" class="form-control form-control-lg" type="text"
+                                                   disabled/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- END Tab Information -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tabs with Icon ends -->
+
+    </div>
+</div>
+
+<!-- Modal -->
+
+
+</body>
+<!-- FOOTER -->
+<th:block th:include="layout/footer"></th:block>
+<!-- FOOTER -->
+
+<!-- JAVA SCRIPT -->
+<th:block th:include="layout/javascript"></th:block>
+<script th:src="@{/theme/main/js/pages/tenant-detail.js}"></script>
+<!-- JAVA SCRIPT -->
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var tenantUuid = /*[[${tenant.uuid}]]*/ '';
+    var menus = /*[[${menus}]]*/ '';
+    /*]]>*/
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('a[data-bs-toggle="tab"]').on('show.bs.tab', function (e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            $('#TabKeep a[href="' + activeTab + '"]').tab('show');
+        }
+    });
+</script>
+</html>

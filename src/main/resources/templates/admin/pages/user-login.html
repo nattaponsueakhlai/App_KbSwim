@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+
+    <th:block th:include="admin/layout/header_css"></th:block>
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="horizontal-layout horizontal-menu blank-page navbar-floating footer-static  " data-open="hover"
+      data-menu="horizontal-menu" data-col="blank-page">
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <!--    <div class="content-overlay"></div>-->
+    <!--    <div class="header-navbar-shadow"></div>-->
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <div class="auth-wrapper auth-cover">
+                <div class="auth-inner row m-0">
+                        <!-- Brand logo-->
+                    <div class="list-item d-flex align-items-start mt-1">
+                    <a class="d-flex" th:href="@{admin/pages/user-login}">
+                        <img th:src="@{/theme/main/admin/images/logo/mercedes-logo.png}" class="img-fluid img-tisco">
+                        <!--                    <h2 class="brand-text text-primary ms-1">Logo</h2>-->
+                    </a>
+                    </div>
+
+                    <!-- /Brand logo-->
+
+                    <!-- Left Text-->
+                    <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
+                        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img
+                                class="img-fluid" th:src="@{/theme/main/admin/images/login-v2.svg}" alt="Login V2"/>
+                        </div>
+
+<!--                        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img-->
+<!--                                class="img-fluid" th:src="@{/theme/main/images/logo/Background-index.png}" alt="Login V2"/>-->
+<!--                        </div>-->
+                    </div>
+
+                    <!-- /Left Text-->
+                    <!-- Login-->
+                    <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+                            <h2 class="card-title fw-bold mb-1">Login Admin  👋</h2>
+                            <!--                            <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>-->
+                            <form class="auth-login-form mt-2" id="loginForm" action="index.html" method="POST">
+                                <div class="mb-1">
+                                    <label class="form-label" for="login-email">UserName</label>
+                                    <input class="form-control" id="login-email" type="text" name="login-email"
+                                           placeholder="john@example.com"
+                                           aria-describedby="login-email" autofocus="" tabindex="1"/>
+                                    <span id="login-email-error" class="error"></span>
+                                </div>
+                                <div class="mb-1">
+                                    <!--                                    <div class="d-flex justify-content-between">-->
+                                    <!--                                        <label class="form-label" for="login-password">Password</label><a-->
+                                    <!--                                            href="../proxy/forgotPassword"><small>Forgot Password?</small></a>-->
+                                    <!--                                    </div>-->
+                                    <!--                                    <label class="form-label" for="login-email">Password</label>-->
+                                    <div class="input-group input-group-merge form-password-toggle">
+                                        <input class="form-control form-control-merge" id="login-password"
+                                               type="password" name="login-password" placeholder="············"
+                                               aria-describedby="login-password" tabindex="2"/><span
+                                            class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                        <span id="login-password-error" class="error"></span>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary w-100" tabindex="4">Log in</button>
+                                <!--                                <button class="btn btn-primary w-100" tabindex="4">Sign in</button>-->
+                            </form>
+
+                        </div>
+                    </div>
+                    <!-- /Login-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+
+<!-- JAVA SCRIPT -->
+<th:block th:include="admin/layout/javascript"></th:block>
+<!-- JAVA SCRIPT -->
+<!--<script th:src="@{/theme/main/js/scripts/pages/auth-login.js}"></script>-->
+
+
+<script>
+    var page = function () {
+        var validator;
+        return {
+            init: function () {
+
+                validator = $('#loginForm').validate({
+                    rules: {
+                        'login-email': {required: true, minlength: 5},
+                        'login-password': {required: true, minlength: 5}
+
+                    },
+                    messages: {
+                        'login-email': {
+                            required: "Please provide a User",
+                            minlength: "Your user must be at least 5 characters long"
+                        },
+                        'login-password': {
+                            required: "Please provide a Password",
+                            minlength: "Your password must be at least 5 characters long"
+                        }
+
+                    },
+                    submitHandler: function (form) { // for demo
+                        page.submit();
+                        return false; // for demo
+                    },
+                    errorElement: 'span',
+                    errorPlacement: function (error, element) {
+                        error.addClass('invalid-feedback');
+                        element.closest('.form-group').append(error);
+                    },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).removeClass('is-invalid');
+                    }
+                });
+
+            },
+
+            submit: function () {
+                // var data = {};
+                var params = {
+                    user_name: $('#login-email').val(),
+                    password: $('#login-password').val()
+                };
+                $.ajax({
+                    url: '/apis/user/check-login',
+                    type: "POST",
+                    data: JSON.stringify(params), // look here!
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",
+                    crossDomain: true,
+                    success: function (resp) {
+                        console.log(resp);
+                        if (resp.data === true){
+                            window.location.href = "index"
+                        }else {
+                            alert("Invalid account !!!")
+                        }
+                        // if (resp.status == "success") {
+                        //     window.location.href = "dashboard";
+                        //     toastr.success('Login Success!! Redirecting.. ');
+                        // } else {
+                        //     toastr.error('Login Failed Please Try Again.. ');
+                        // }
+                        // setTimeout(function () {
+                        //     $("#loadingModal").modal("hide");
+                        // }, 1000);
+                    }, error: function (xhr, ajaxOptions, thrownError) {
+                        console.log("error");
+                        console.log("xhr ", xhr);
+                        console.log("ajaxOptions ", ajaxOptions);
+                        console.log("thrownError ", thrownError);
+                        // setTimeout(function () {
+                        //     $("#loadingModal").modal("hide");
+                        // }, 1000);
+                        // if (xhr.responseJSON.status === 'error') {
+                        //     var pathVar = (window.location.href).split("/");
+                        //     var imgCaptcha = pathVar[0] + "//" + pathVar[2] + "/" + pathVar[3] + "/captcha" + "?" + new Date().getTime();
+                        //     $("#imgCaptcha").attr("src", imgCaptcha);
+                        //     $("#captcha").val('');
+                        // }
+
+                        // toastr.error(xhr.responseJSON.description);
+                    }
+                });
+
+            }
+
+        };
+
+    }();
+
+    $(document).ready(function () {
+        page.init();
+
+    });
+</script>
+
+
+</body>
+<!-- END: Body-->
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="loading" lang="en" data-textdirection="ltr">
+    <!-- BEGIN: Head -->
+    <head>
+        <th:block th:include="layout/header_css"></th:block>
+
+
+    </head>
+    <!-- END: Head -->
+
+    <!-- BEGIN: Body -->
+    <body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
+
+            <!-- BEGIN: Content -->
+            <div class="app-content content ">
+                <div class="content-overlay"></div>
+                <div class="header-navbar-shadow"></div>
+                <div class="content-wrapper">
+                    <div class="content-header row">
+                    </div>
+                    <div class="content-body">
+                        <!-- Error page-->
+                        <div class="misc-wrapper">
+
+
+                            <div class="misc-inner p-2 p-sm-3">
+                                <div class="w-100 text-center">
+                                    <h2 class="mb-1 font-large-3"></h2>
+                                    <h2 class="mb-1" th:text="${title}"></h2>
+                                    <p class="mb-2" th:text="${description}"></p>
+                                    <img class="img-fluid" th:src="@{/theme/main/images/pages/login-v2.svg}" alt="success page" />
+
+                                    <div>
+                                        <button type="button" class="btn btn-primary btn-sm-block">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- / Error page-->
+                    </div>
+                </div>
+            </div>
+
+    </body>
+    <!-- FOOTER -->
+<!--        <th:block th:include="layout/footer"></th:block>-->
+    <!-- FOOTER -->
+
+    <!-- JAVA SCRIPT -->
+        <th:block th:include="layout/javascript"></th:block>
+    <!-- JAVA SCRIPT -->
+
+<script>
+    var newWindow;
+    function closeWindow() {
+        newWindow.close();
+    }
+</script>
+
+
+</html>

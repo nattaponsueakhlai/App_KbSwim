@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head -->
+<head>
+    <th:block th:include="admin/layout/header_css"></th:block>
+</head>
+<!-- END: Head -->
+
+<!-- BEGIN: Body -->
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
+
+<!-- HEADER -->
+<th:block th:include="admin/layout/header"></th:block>
+<!-- HEADER -->
+<!-- MENU -->
+<th:block th:include="admin/layout/menu"></th:block>
+<!-- MENU -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+<!-- JAVA SCRIPT -->
+<th:block th:include="admin/layout/javascript"></th:block>
+<!--        <script th:src="@{/theme/main/js/scripts/pages/dashboard-analytics.js}"></script>-->
+<!-- JAVA SCRIPT -->
+
+<script>
+    $(window).on('load', function() {
+        if (feather) {
+            feather.replace({
+                width: 14,
+                height: 14
+            });
+        }
+    })
+</script>
+</html>

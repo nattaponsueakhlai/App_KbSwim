@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="body_javascript">
+    <!-- Vendor JS-->
+    <script th:src="@{/theme/main/admin/vendors/js/vendors.min.js}"></script>
+    <!-- Vendor JS-->
+
+    <!-- Page Vendor JS-->
+
+    <script th:src="@{/theme/main/admin/vendors/js/extensions/toastr.min.js}"></script>
+    /
+    <!-- END: Page Vendor JS-->
+    <script th:src="@{/theme/main/admin/vendors/js/forms/validation/jquery.validate.min.js}"></script>
+    <script th:src="@{/theme/main/admin/js/scripts/forms/form-validation.js}"></script>
+
+    <!-- Theme JS-->
+    <script th:src="@{/theme/main/admin/js/core/app-menu.js}"></script>
+    <script th:src="@{/theme/main/admin/js/core/app.js}"></script>
+    <!-- END: Theme JS-->
+
+    <!--chart-->
+    <script th:src="@{/theme/main/admin/vendors/js/charts/apexcharts.min.js}"></script>
+    <script th:src="@{/theme/main/admin/js/scripts/charts/chart-apex.js}"></script>
+
+    <!-- datatable JS-->
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/dataTables.bootstrap5.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/dataTables.responsive.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/responsive.bootstrap5.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/datatables.buttons.min.js}"></script>
+    <script th:src="@{/theme/main/admin/js/scripts/tables/table-datatables-advanced.js}"></script>
+<!--    <script th:src="@{/theme/main/js/scripts/tables/table-datatables-basic.js}"></script>-->
+
+    <!-- END: Page JS-->
+
+    <!--Export Datable-->
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/jszip.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/pdfmake.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/vfs_fonts.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/buttons.html5.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/buttons.print.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/tables/datatable/dataTables.rowGroup.min.js}"></script>
+    <!--End Export Datable-->
+
+    <!--date picker-->
+    <script th:src="@{/theme/main/admin/vendors/js/pickers/pickadate/picker.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/pickers/pickadate/picker.date.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/pickers/pickadate/picker.time.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/pickers/pickadate/legacy.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/pickers/flatpickr/flatpickr.min.js}"></script>
+    <script th:src="@{/theme/main/admin/js/scripts/forms/pickers/form-pickers.js}"></script>
+    <!-- end date picker-->
+
+    <!--Alert Delete Block-->
+    <script th:src="@{/theme/main/admin/js/scripts/extensions/ext-component-sweet-alerts.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/extensions/polyfill.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/extensions/sweetalert2.all.min.js}"></script>
+
+    <!--Alert Toastr-->
+    <script th:src="@{/theme/main/admin/js/scripts/extensions/ext-component-toastr.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/extensions/toastr.min.js}"></script>
+
+    <!--Quill Rich Text Editor-->
+    <script th:src="@{/theme/main/admin/vendors/js/editors/quill/katex.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/editors/quill/highlight.min.js}"></script>
+    <script th:src="@{/theme/main/admin/vendors/js/editors/quill/quill.min.js}"></script>
+    <!--End Quill Rich Text Editor-->
+
+
+    <!--form-select2-->
+    <script th:src="@{/theme/main/admin/vendors/js/forms/select/select2.full.min.js}"></script>
+    <script th:src="@{/theme/main/admin/js/scripts/forms/form-select2.js}"></script>
+
+    <!--moment-->
+    <script th:src="@{/theme/main/admin/js/scripts/moment.js}"></script>
+
+    <script>
+        $(window).on('load', function () {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".modal").modal({
+                show: false,
+                backdrop: 'static'
+            });
+        });
+    </script>
+
+
+</div>
+</html>
+
+
+<!--SUCCESS ERROR TOASTR-->
+<script>
+    $(function () {
+        'use strict';
+
+        var isRtl = $('html').attr('data-textdirection') === 'rtl',
+            typeSuccess = $('#type-toastr-success'),
+            typeError = $('#type-toastr-error'),
+            clearToastObj;
+
+        // Success Type
+        typeSuccess.on('click', function () {
+            toastr['success']('👋 Jelly-o macaroon brownie tart ice cream croissant jelly-o apple pie.', 'Success!', {
+                closeButton: true,
+                tapToDismiss: false,
+                rtl: isRtl
+            });
+        });
+
+
+        // Error Type
+        typeError.on('click', function () {
+            toastr['error']('👋 Jelly-o marshmallow marshmallow cotton candy dessert candy.', 'Error!', {
+                closeButton: true,
+                tapToDismiss: false,
+                rtl: isRtl
+            });
+        });
+    });
+</script>
+<!--SUCCESS ERROR TOASTR-->

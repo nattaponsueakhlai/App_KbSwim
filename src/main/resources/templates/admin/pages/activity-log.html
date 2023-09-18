@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head -->
+<head>
+    <th:block th:include="layout/header_css"></th:block>
+</head>
+<!-- END: Head -->
+
+<!-- BEGIN: Body -->
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
+      data-menu="vertical-menu-modern" data-col="">
+<!-- Loading -->
+<th:block th:include="layout/loading"></th:block>
+<!-- Loading -->
+<!-- HEADER -->
+<th:block th:include="layout/header"></th:block>
+<!-- HEADER -->
+<!-- MENU -->
+<th:block th:include="layout/menu"></th:block>
+<!-- MENU -->
+<!-- BEGIN: Content -->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header">Activity Log</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <!-- search section-->
+            <section id="location-input">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"></h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form class="needs-validation" novalidate>
+                                                <div class="row">
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label">UCID</label>
+                                                        <input type="text" class="form-control" placeholder="UCID"/>
+                                                    </div>
+
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="status">Status Log</label>
+                                                        <select class="form-select" id="status">
+                                                            <option value="">select status</option>
+                                                            <option value="Success">Success</option>
+                                                            <option value="Cancel">Cancel</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="flowType">Sale User</label>
+                                                        <select class="form-select" id="flowType">
+                                                            <option value="">select Sale User</option>
+                                                            <option value="0">Sale1</option>
+                                                            <option value="1">Sale2</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="startDate">Start Date</label>
+                                                        <input type="text" id="startDate"
+                                                               class="form-control flatpickr-basic"
+                                                               placeholder="YYYY-MM-DD"/>
+                                                    </div>
+
+                                                    <div class="col-xl-4 mb-1">
+                                                        <label class="form-label" for="endDate">End Date</label>
+                                                        <input type="text" id="endDate"
+                                                               class="form-control flatpickr-basic"
+                                                               placeholder="YYYY-MM-DD"/>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <button type="button" class="btn btn-primary me-1"
+                                                                id="search-btn">
+                                                            Search
+                                                        </button>
+
+                                                        <button type="button" class="btn btn-outline-danger me-1"
+                                                                id="clear-btn">
+                                                            Clear
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- table section-->
+            <section id="activity_Log-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <!-- <h4 class="card-title">Data</h4>-->
+                            </div>
+                            <div class="card-datatable">
+                                <table id="activity-log" class="datatables-ajax display table" style="width:100%">
+                                    <thead>
+                                    <tr>
+                                        <th>UCID</th>
+                                        <th>Sale User</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!--MODAL VIEW-->
+
+<!-- Modal View-->
+<div class="modal fade text-start" id="view-activityLog" tabindex="-1" aria-labelledby="myModalLabel17"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom">
+                <h4 class="modal-title" id="viewactivityLog">View Endpoint Detail</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <section>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form class="form">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="env-column">Env</label>
+                                                    <input type="text" id="env-column"
+                                                           class="form-control" placeholder="Env"
+                                                           name="env-column" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="project-column">Project</label>
+                                                    <input type="text" id="project-column"
+                                                           class="form-control" placeholder="Project Name"
+                                                           name="project-column" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="service-column">Service</label>
+                                                    <input type="text" id="service-column"
+                                                           class="form-control"
+                                                           placeholder="decryptURL"
+                                                           name="service-column" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="protocal-type-column">Protocal
+                                                        Type</label>
+                                                    <input type="text" id="protocal-type-column"
+                                                           class="form-control"
+                                                           placeholder="Protocal Type"
+                                                           name="protocal-type-column" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="dns-name-column">DNS Name</label>
+                                                    <input type="text" id="dns-name-column"
+                                                           class="form-control"
+                                                           placeholder="DNS Name"
+                                                           name="dns-name-column" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="port-column">Port</label>
+                                                    <input type="text" id="port-column"
+                                                           class="form-control"
+                                                           placeholder="Port"
+                                                           name="port-column" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="url-column">URL</label>
+                                                    <input type="text" id="url-column"
+                                                           class="form-control"
+                                                           placeholder="URL"
+                                                           name="url-column" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="status-column">Status</label>
+
+                                                    <div>
+                                                        <button id="status-column" type="button"
+                                                                class="btn btn-outline-secondary dropdown-toggle col-12"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                disabled>Choose Active or Inactive
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#">Active</a>
+                                                            <a class="dropdown-item" href="#">Inactive</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="attr1-column">Attr1</label>
+                                                    <textarea class="form-control" id="attr1-column" rows="3"
+                                                              placeholder="Textarea" disabled></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="attr2-column">Attr2</label>
+                                                    <textarea class="form-control" id="attr2-column" rows="3"
+                                                              placeholder="Textarea" disabled></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal view detail  -->
+<div class="modal fade text-start" id="view-detail" tabindex="-1" aria-labelledby="add-edit-tenant-modal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+
+        <div class="modal-content">
+            <div class="modal-header border-bottom">
+                <h4 class="modal-title">view detail</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+<!--                        <div class="card">-->
+                            <div class="card-datatable">
+                                <table id="activity-detail" class="datatables-ajax display table nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>Reference ID</th>
+                                        <th>Page Name</th>
+                                        <th>Action</th>
+                                        <th>DATE</th>
+                                        <!-- <th>view</th>-->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+<!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal add and edit Tenant -->
+</body>
+<!-- FOOTER -->
+<th:block th:include="layout/footer"></th:block>
+<!-- FOOTER -->
+
+<!-- JAVA SCRIPT -->
+<th:block th:include="layout/javascript"></th:block>
+<!-- JAVA SCRIPT -->
+
+<script th:src="@{/theme/main/js/pages/activity-log.js}"></script>
+
+</html>
