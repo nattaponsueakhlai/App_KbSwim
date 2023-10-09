@@ -3,12 +3,15 @@ package com.appkbswim.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.UUID;
-
 @Controller
-public class AppController {
+public class AppControllerAdmin {
 
     //FrontEnd
+
+    @GetMapping("krubirdswim")
+    public String swiminfoRoute() {
+        return "webinfo/swiminfo";
+    }
 
     //-------------------------------------------------------------------------------------------------------------------------
 
