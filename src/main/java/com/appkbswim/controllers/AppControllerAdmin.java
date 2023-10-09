@@ -16,7 +16,7 @@ public class AppControllerAdmin {
     //-------------------------------------------------------------------------------------------------------------------------
 
     //Admin
-    @GetMapping("")
+    @GetMapping("loginAdmin")
     public String loginRoute() {
         return "admin/pages/login";
     }
